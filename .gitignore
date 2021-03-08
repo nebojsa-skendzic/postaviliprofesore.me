@@ -27,3 +27,7 @@
 /lib64
 /lib/
 /bin/
+/postaviliprofesore/mainapp/__pycache__/admin.cpython-38.pyc
+/.gitignore
+/postaviliprofesore/mainapp/__pycache__/admin.cpython-38.pyc
+/postaviliprofesore/mainapp/__pycache__/models.cpython-38.pyc

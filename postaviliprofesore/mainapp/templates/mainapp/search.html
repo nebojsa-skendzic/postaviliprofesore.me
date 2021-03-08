@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+{% block content %}
+
+{% for i in result %}
+<a href="{{ i.resultlink }}">{{ i.smjer }}, {{ i.semestar }}</a>
+{% endfor %}
+
+{% for i in result %}
+    <li>{{ i.smjer }}
+    <ul><a href="{{ i.resultlink }}"> {{ i.semestar }}</a>
+    </ul>
+    </li>
+{% endfor %}
+
+{% for key, value in test.items %}
+    <li>{{ key }}
+    {% for x, y in value.items %}
+    <a href="{{y}}"> {{ x }}</a>
+    {% endfor %}
+    </li>
+{% endfor %}
+
+
+
+{% endblock content %}

@@ -3,7 +3,7 @@
 <head>{% load static %}</head>
 
 {% block content %}
-
+<div style="background-color: #FFFFE0">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
 <script>
@@ -45,10 +45,11 @@
         <th scope="row">{{ forloop.counter }}</th>
         <td><a href='{{ i.link }}'>{{ i.title }}</a></td>
         <td>{{ i.subjecttag }}</td>
-        <td>{{ i.date }}</td>
+        <td>{{ i.date|date:"d.m.Y" }}</td>
       </tr>
       {% endfor %}
   </tbody>
 </table>
 
+</div>
 {% endblock content %}

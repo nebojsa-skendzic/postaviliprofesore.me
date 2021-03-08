@@ -4,20 +4,19 @@
 
 {% block content %}
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
 
-<form id="form" method="GET" onsubmit="submitalt();">
-    <script>makeForm()</script>
-  <button id="result-submit" type="submit" class="btn btn-primary float-right">Submit</button>
-</form>
+  <form id="form" method="GET" onsubmit="submitalt();">
+      <script>makeForm()</script>
+    <button id="result-submit" type="submit" class="btn btn-primary float-right">Submit</button>
+  </form>
 
-<div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-    <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button onclick="makeForm()" class="btn btn-outline-success">+</button>
-        <button onclick="delForm()" class="btn btn-outline-danger">x</button>
-    </div>
-</div>
+  <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-2" role="group" aria-label="First group">
+          <button onclick="makeForm()" class="btn btn-outline-success">+</button>
+          <button onclick="delForm()" class="btn btn-outline-danger">x</button>
+      </div>
+  </div>
 
 <table class="table table-sm table-hover" id="result-table" style="display: none;">
   <thead class="thead-dark">
@@ -32,6 +31,5 @@
 
   </tbody>
 </table>
-
 
 {% endblock content %}
