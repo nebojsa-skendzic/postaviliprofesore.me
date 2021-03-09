@@ -19,21 +19,26 @@ class UpdatedFiles(models.Model):
 class Fakultet(models.Model):
     fakultet = models.CharField(max_length=120)
 
+    class Meta:
+        verbose_name_plural = "Fakulteti"
+
     def __str__(self):
         return self.fakultet
 
 
 class Smjer(models.Model):
-    fakultet = models.ForeignKey('Fakultet', on_delete=models.CASCADE)
+    fakultet = models.ForeignKey('Fakultet', on_delete=models.SET_NULL, null=True)
     smjer = models.CharField(max_length=120)
+
+    class Meta:
+        verbose_name_plural = "Smjerovi"
 
     def __str__(self):
         return self.smjer
 
 
 class Semestar(models.Model):
-    fakultet = models.ForeignKey('Fakultet', on_delete=models.CASCADE)
-    smjer = models.ForeignKey('Smjer', on_delete=models.CASCADE)
+    smjer = models.ForeignKey('Smjer', on_delete=models.SET_NULL, null=True)
     semestar = models.IntegerField()
     resultlink = models.TextField()
 

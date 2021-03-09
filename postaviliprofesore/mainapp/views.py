@@ -12,7 +12,7 @@ import json
 
 def searchResult(request):
     query = request.GET.get('q')
-    obj = Semestar.objects.filter(fakultet__fakultet=query).order_by('-smjer__smjer', 'semestar')
+    obj = Semestar.objects.filter(smjer__fakultet__fakultet=query).order_by('-smjer__smjer', 'semestar')
     test = {}
     listofsmjer = []
     for i in obj:
