@@ -1,25 +1,17 @@
 {% extends 'mainapp/base.html' %}
 {% block content %}
 
-{% for i in result %}
-<a href="{{ i.resultlink }}">{{ i.smjer }}, {{ i.semestar }}</a>
-{% endfor %}
-
-{% for i in result %}
-    <li>{{ i.smjer }}
-    <ul><a href="{{ i.resultlink }}"> {{ i.semestar }}</a>
-    </ul>
-    </li>
-{% endfor %}
+<div class='container-fluid'>
 
 {% for key, value in test.items %}
-    <li>{{ key }}
+    <div class='d-inline-flex p-2 text-white'> <h3>{{ key }}</h3></div>
+    <div class="btn-group mr-2 d-inline-flex p-2 text-white" role="group">
     {% for x, y in value.items %}
-    <a href="{{y}}"> {{ x }}</a>
+    <a href="{{ y }}" type="button" class="btn btn-secondary">{{ x }}</a>
     {% endfor %}
-    </li>
+  </div>
+
 {% endfor %}
-
-
+</div>
 
 {% endblock content %}

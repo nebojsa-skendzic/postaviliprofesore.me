@@ -30,6 +30,16 @@ def index(request):
     return render(request, "mainapp/index.html")
 
 
+def test(request):
+
+    return render(request, "mainapp/test.html")
+
+
+def napravisvoj(request):
+
+    return render(request, "mainapp/napravi-svoj.html")
+
+
 def resultView(request, webtag):
     splitted = webtag.split(",")
     for i in splitted:

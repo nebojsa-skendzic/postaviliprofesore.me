@@ -3,12 +3,9 @@
 <head>{% load static %}</head>
 
 {% block content %}
-<div style="background-color: #FFFFE0">
+<div style="background-color: #FFFFE0; opacity: 0.5;" class="mx-auto text-center" style="padding-top: 100px;">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
-<script>
-
-</script>
 
 <div class='pb-2'>
   <button id='hidebtn' type="button" class="btn btn-dark btn-sm btn-block" data-toggle="collapse" data-target="#hideable" aria-expanded="false" aria-controls="#hideable">
@@ -29,7 +26,7 @@
   </div>
 </div>
 
-
+<div class="table-custom-scrollbar table-wrapper-scroll-y">
 <table class="table table-sm table-hover" id="result-table" style="display: table;">
   <thead class="thead-dark">
     <tr>
@@ -50,6 +47,7 @@
       {% endfor %}
   </tbody>
 </table>
+</div>
 
 </div>
 {% endblock content %}

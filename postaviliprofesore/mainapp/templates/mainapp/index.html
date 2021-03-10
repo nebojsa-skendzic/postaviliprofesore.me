@@ -4,34 +4,10 @@
 
 {% block content %}
 
-<script src="{% static 'app.js' %}"></script>
-
-
-  <form id="form" method="GET" onsubmit="submitalt();">
-      <script>makeForm()</script>
-    <button id="result-submit" type="submit" class="btn btn-primary float-right">Submit</button>
-  </form>
-
-  <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="btn-group mr-2" role="group" aria-label="First group">
-          <button onclick="makeForm()" class="btn btn-outline-success">+</button>
-          <button onclick="delForm()" class="btn btn-outline-danger">x</button>
-      </div>
-  </div>
-
-
-<table class="table table-sm table-hover" id="result-table" style="display: none;">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Subject Tag</th>
-      <th scope="col">Date</th>
-    </tr>
-  </thead>
-  <tbody id="result-body">
-
-  </tbody>
-</table>
+<div class="mx-auto text-center">
+    <h1 class="mx-auto my-0 text-uppercase">Postavi li, profesore?</h1>
+    <h2 class="text-white-50 mx-auto mt-2 mb-5">Najlakši način da provjeriš da li je postavljen novi link na sajtu UCG-a, bio to link za predavanje ili samo neka novost.</h2>
+    <a class="btn btn-outline-success js-scroll-trigger" href="{% url 'napraviSvoj' %}">Započni</a>
+</div>
 
 {% endblock content %}
