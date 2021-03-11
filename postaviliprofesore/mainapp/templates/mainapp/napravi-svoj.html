@@ -3,18 +3,45 @@
 <head>{% load static %}</head>
 
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
 
 
-  <form id="form" method="GET" onsubmit="submitalt();">
-      <script>makeForm()</script>
-    <button id="result-submit" type="submit" class="btn btn-primary float-right">Submit</button>
-  </form>
+<div class="container-fluid">
+  <div class="row">
+        <div class="col"><h4 style="color: #F0F8FF">Dodaj koliko god želiš linkova, a kada ih dodaš, sačuvaj link. Pomoću njega
+        ćeš uvijek moći da provjeriš da li je postavljeno nešto novo.</h4></div>
+        <div class="col-6">
+          <div class="table-custom-scrollbar-x table-wrapper-scroll-y">
+            <form id="form" method="GET" onsubmit="submitalt();">
+                <script>makeForm()</script>
+              <button id="result-submit" type="submit" class="btn btn-outline-success float-right">TRAŽI</button>
+            </form>
 
-  <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-      <div class="btn-group mr-2" role="group" aria-label="First group">
-          <button onclick="makeForm()" class="btn btn-outline-success">+</button>
-          <button onclick="delForm()" class="btn btn-outline-danger">x</button>
-      </div>
+            <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button onclick="makeForm()" class="btn btn-outline-success">+</button>
+                    <button onclick="delForm()" class="btn btn-outline-danger">x</button>
+                </div>
+            </div>
+          </div>
+        </div>
   </div>
+  <div class="row pt-4">
+        <div class="col-6">
+            <figure class="figure">
+              <img src="{% static 'primjer.png' %}" class="figure-img img-fluid rounded" alt="Primjer">
+              <figcaption class="text-right lead" style="color: #F0F8FF;">Primjer</figcaption>
+            </figure>
+        </div>
+        <div class="col"><h5 style="color: #F0F8FF">Sajt može da primi samo određenu vrstu linka. Pobrini se da raspored
+        stranice sa koje kopiraš link liči na primjer.</h5>
+        <h6 style="color: #F0F8FF">Alternativno, pobrini se da je link po šablonu:<br> <br><mark style="color: #e8e8e8; background: #1b5f87;">https://www.ucg.ac.me/objave_spisak/...</mark><br><br>
+        Trebalo bi da radi svaka stranica kojoj možeš pristupiti preko plavog dugmeta. Obavještenja, dokumenta, vijesti itd.
+      Uključujuči i vijesti za predmete. Na primjer:<br><br></h6><img src="{% static 'plavi.png' %}" class="img-thumbnail" alt="Primjer za dugme"></div>
+  </div>
+</div>
+
+
+
 {% endblock content %}

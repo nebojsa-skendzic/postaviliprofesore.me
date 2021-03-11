@@ -8,8 +8,8 @@ function makeForm() {
     new_field.setAttribute("name", "name[]");
     new_field.setAttribute("class", "form-control");
     new_field.setAttribute("placeholder", "Enter link");
-    id += 1;
     new_field.setAttribute("id", id);
+    id += 1;
     var divadd = document.createElement('div');
     divadd.setAttribute("class", "form-group");
     divadd.appendChild(new_field);
@@ -32,17 +32,16 @@ function makeFormResult(splitted) {
         divadd.setAttribute("class", "form-group");
         divadd.appendChild(new_field);
         x.insertBefore(divadd, submit_button);
-        document.getElementById(id).value = "https://www.ucg.ac.me/objave_spisak/" + splitted[id-1];
+        document.getElementById(id).value = splitted[id-1];
         id += 1;
     }
 }
 
 function delForm() {
 
-    id -= 1;
-    var y = document.getElementById(id+1);
+    var y = document.getElementById(id-1);
     y.remove();
-
+    id -= 1;
 }
 
 function resultrender(data) {
@@ -113,12 +112,10 @@ function submitalt() {
             inputs[i].remove();
             i--;
         } else {
-            var shortened = e.replace("https://www.ucg.ac.me/objave_spisak/", "")
-            linklist.push(shortened);
-            console.log(shortened);
+            linklist.push(e);
         }
     }
-
+    console.log(linklist);
     var url = `http://127.0.0.1:8000/result/${linklist}`;
     window.location.href = url;
 
@@ -160,6 +157,12 @@ function submitalt() {
     // Closes responsive menu when a scroll trigger link is clicked
     $(".js-scroll-trigger").click(function () {
         $(".navbar-collapse").collapse("hide");
+    });
+
+    // Activate scrollspy to add active class to navbar items on scroll
+    $("body").scrollspy({
+        target: "#mainNav",
+        offset: 100,
     });
 
     // Collapse Navbar

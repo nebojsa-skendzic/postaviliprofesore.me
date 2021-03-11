@@ -16,9 +16,9 @@ def generatelink(href):
 
 def getlinks(url):
     # url = ['https://www.ucg.ac.me/objave_spisak/blog/1247']
-
+    urllong = "https://www.ucg.ac.me/objave_spisak/" + url
     try:
-        data = requests.get(url)
+        data = requests.get(urllong)
         data = data.text
 
         soup = BeautifulSoup(data, 'html.parser')
@@ -69,7 +69,7 @@ if __name__ == "__main__":
             uniquetags.append(i)
 
     if uniquetags == []:
-        uniquetags.append("https://www.ucg.ac.me/objave_spisak/blog/1247")  # Placeholder in case there is nothing in db
+        uniquetags.append("blog/1247")  # Placeholder in case there is nothing in db
 
     for i in uniquetags:
         getlinks(i)
