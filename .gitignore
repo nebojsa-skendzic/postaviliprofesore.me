@@ -63,5 +63,13 @@
 >>>>>>> master
 =======
 /postaviliprofesore/postaviliprofesore/__pycache__/settings.cpython-38.pyc
+<<<<<<< HEAD
 >>>>>>> master
 /postaviliprofesore/__pycache__/ucginfimport.cpython-38.pyc
+=======
+/postaviliprofesore/postaviliprofesore/__pycache__/settings.cpython-38.pyc
+>>>>>>> master
+/postaviliprofesore/__pycache__/ucginfimport.cpython-38.pyc
+/postaviliprofesore/mainapp/__pycache__/admin.cpython-38.pyc
+/postaviliprofesore/mainapp/__pycache__/models.cpython-38.pyc
+/postaviliprofesore/mainapp/__pycache__/serializers.cpython-38.pyc
