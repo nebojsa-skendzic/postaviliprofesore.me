@@ -51,6 +51,12 @@
 /postaviliprofesore/mainapp/__pycache__/forms.cpython-38.pyc
 /postaviliprofesore/mainapp/__pycache__/models.cpython-38.pyc
 /postaviliprofesore/mainapp/__pycache__/serializers.cpython-38.pyc
+<<<<<<< HEAD
 >>>>>>> master
 /startserver.sh
 /sshtoserver.sh
+=======
+/sshtoserver.sh
+/startserver.sh
+/postaviliprofesore/postaviliprofesore/postaviliprofesore.sublime-workspace
+>>>>>>> master
