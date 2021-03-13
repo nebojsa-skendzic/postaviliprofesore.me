@@ -59,4 +59,9 @@
 /sshtoserver.sh
 /startserver.sh
 /postaviliprofesore/postaviliprofesore/postaviliprofesore.sublime-workspace
+<<<<<<< HEAD
 >>>>>>> master
+=======
+/postaviliprofesore/postaviliprofesore/__pycache__/settings.cpython-38.pyc
+>>>>>>> master
+/postaviliprofesore/__pycache__/ucginfimport.cpython-38.pyc
