@@ -29,7 +29,7 @@ SECRET_KEY = config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.107.122.159',]
+ALLOWED_HOSTS = ['34.107.122.159', '127.0.0.1']
 
 
 # Application definition
@@ -128,5 +128,5 @@ STATIC_ROOT = "/home/nebojsa-skendzic/postaviliprofesore/staticfiles"
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    '/home/nebojsa-skendzic/postaviliprofesore/static/',
+    '/home/nebojsa-skendzic/Development/postaviliprofesore.me/postaviliprofesore/static/',
 )

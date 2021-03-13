@@ -96,7 +96,7 @@ function submitfunc() {
         }
     }
     console.log(linklist);
-    var url = `http://34.107.122.159/api/detail-view/${linklist}`;
+    var url = `/api/detail-view/${linklist}`;
     fetch(url)
     .then(response => response.json())
     .then(data => resultrender(data));
@@ -118,8 +118,8 @@ function submitalt() {
             console.log(shortened);
         }
     }
-
-    var url = `http://34.107.122.159/result/${linklist}`;
+    var url = `/result/${linklist}`;
+    console.log(url)
     window.location.href = url;
 
 }
