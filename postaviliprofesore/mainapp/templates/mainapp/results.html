@@ -55,27 +55,28 @@
     </div>
   </div>
 
-
-  <table class="table table-sm table-hover" id="result-table" style="display: table; opacity: 1; background-color: #d8edc5;  position: -webkit-sticky;">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Naslov</th>
-        <th scope="col">Tag</th>
-        <th scope="col">Datum</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for i in results %}
+  <div class="table-resposnive">
+    <table class="table table-sm table-hover" id="result-table" style="display: table; opacity: 1; background-color: #d8edc5;  position: -webkit-sticky;">
+      <thead class="thead-dark">
         <tr>
-          <th scope="row">{{ forloop.counter }}</th>
-          <td><a href='{{ i.link }}'>{{ i.title }}</a></td>
-          <td>{{ i.subjecttag }}</td>
-          <td>{{ i.date|date:"d.m.Y" }}</td>
+          <th scope="col">#</th>
+          <th scope="col">Naslov</th>
+          <th scope="col">Tag</th>
+          <th scope="col">Datum</th>
         </tr>
-        {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+          {% for i in results %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href='{{ i.link }}'>{{ i.title }}</a></td>
+            <td>{{ i.subjecttag }}</td>
+            <td>{{ i.date|date:"d.m.Y" }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 </div>
