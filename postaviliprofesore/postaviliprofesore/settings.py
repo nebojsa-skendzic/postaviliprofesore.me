@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import json
+
+with open('/etc/config.json') as config_file:
+    config = json.load(config_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kirr@*gx35y8$!d-5c2s!pp6(r%4)e_4_m-n%#j#03&vj-(mn2'
+SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.107.122.159',]
 
 
 # Application definition
@@ -119,10 +123,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = "/home/nebojsa-skendzic/Development/postaviliprofesore.me/postaviliprofesore/"
+STATIC_ROOT = "/home/nebojsa-skendzic/postaviliprofesore/staticfiles"
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    '/home/nebojsa-skendzic/Development/postaviliprofesore.me/postaviliprofesore/static/',
+    '/home/nebojsa-skendzic/postaviliprofesore/static/',
 )
