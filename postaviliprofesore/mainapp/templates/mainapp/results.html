@@ -36,20 +36,20 @@
 <script src="{% static 'app.js' %}"></script>
 
 <div class="table-custom-scrollbar table-wrapper-scroll-y">
-  <div class='pb-2' style="opacity: 1;" style="position: -webkit-sticky; position: sticky; top: 0;">
+  <div class='pb-2' style="opacity: 1; position: -webkit-sticky; position: sticky; top: 0;">
     <button id='hidebtn' type="button" class="btn btn-dark btn-sm btn-block" data-toggle="collapse" data-target="#hideable" aria-expanded="false" aria-controls="#hideable">
       Dodaj ili ukloni link
     </button>
     <div id='hideable' class='collapse'>
       <form id="form" method="GET" onsubmit="submitalt();">
           <script>makeFormResult({{ splitted|safe }})</script>
-        <button id="result-submit" type="submit" class="btn btn-outline-success float-right">TRAŽI</button>
+        <button id="result-submit" type="submit" class="btn btn-success float-right">TRAŽI</button>
       </form>
 
       <div class="btn-toolbar float-right pb-2" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="First group">
-              <button onclick="makeForm()" class="btn btn-outline-success">+</button>
-              <button onclick="delForm()" class="btn btn-outline-danger">x</button>
+              <button onclick="makeForm()" class="btn btn-success">+</button>
+              <button onclick="delForm()" class="btn btn-danger">x</button>
           </div>
       </div>
     </div>

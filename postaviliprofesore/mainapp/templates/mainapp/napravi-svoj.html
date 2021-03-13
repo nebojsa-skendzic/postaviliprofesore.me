@@ -6,13 +6,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
 
-
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 2rem;">
   <div class="row">
-        <div class="col"><h4 style="color: #F0F8FF">Dodaj koliko god želiš linkova, a kada ih dodaš, sačuvaj link. Pomoću njega
+        <div class="col d-none d-md-block"><h4 style="color: #F0F8FF">Dodaj koliko god želiš linkova, a kada ih dodaš, sačuvaj link. Pomoću njega
         ćeš uvijek moći da provjeriš da li je postavljeno nešto novo.</h4></div>
-        <div class="col-6">
-          <div class="table-custom-scrollbar-x table-wrapper-scroll-y">
+        <div class="col">
+          <div class="table-custom-scrollbar-x table-wrapper-scroll-y mx-auto">
             <form id="form" method="GET" onsubmit="submitalt();">
                 <script>makeForm()</script>
               <button id="result-submit" type="submit" class="btn btn-outline-success float-right">TRAŽI</button>
@@ -27,8 +26,15 @@
           </div>
         </div>
   </div>
+    <div class="row d-md-none">
+        <div class="col"><h4 style="color: #F0F8FF">Dodaj koliko god želiš linkova, a kada ih dodaš, sačuvaj link. Pomoću njega
+        ćeš uvijek moći da provjeriš da li je postavljeno nešto novo.</h4></div>
+  </div>
+
+
+
   <div class="row pt-4">
-        <div class="col-6">
+        <div class="col d-none d-md-block">
             <figure class="figure">
               <img src="{% static 'primjer.png' %}" class="figure-img img-fluid rounded" alt="Primjer">
               <figcaption class="text-right lead" style="color: #F0F8FF;">Primjer</figcaption>
@@ -39,6 +45,14 @@
         <h6 style="color: #F0F8FF">Alternativno, pobrini se da je link po šablonu:<br> <br><mark style="color: #e8e8e8; background: #1b5f87;">https://www.ucg.ac.me/objave_spisak/...</mark><br><br>
         Trebalo bi da radi svaka stranica kojoj možeš pristupiti preko plavog dugmeta. Obavještenja, dokumenta, vijesti itd.
       Uključujuči i vijesti za predmete. Na primjer:<br><br></h6><img src="{% static 'plavi.png' %}" class="img-thumbnail" alt="Primjer za dugme"></div>
+  </div>
+  <div class="row pt-4 d-md-none">
+        <div class="col">
+            <figure class="figure">
+              <img src="{% static 'primjer.png' %}" class="figure-img img-fluid rounded" alt="Primjer">
+              <figcaption class="text-right lead" style="color: #F0F8FF;">Primjer</figcaption>
+            </figure>
+        </div>
   </div>
 </div>
 
