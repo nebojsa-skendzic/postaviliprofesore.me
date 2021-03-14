@@ -1,6 +1,8 @@
 id = 1
 
+
 function makeForm() {
+    var idstart = document.getElementsByName('name[]')
     var x = document.getElementById('form');
     var submit_button = document.getElementById('result-submit');
     var new_field = document.createElement('input');
@@ -13,12 +15,13 @@ function makeForm() {
     divadd.setAttribute("class", "form-group");
     divadd.appendChild(new_field);
     x.insertBefore(divadd, submit_button);
-    id += 1;
+    id = idstart.item(idstart.length + 1);
 }
 
 function makeFormResult(splitted) {
     console.log(splitted)
     for (i=0; i < splitted.length; i++){
+        var idstart = document.getElementsByName('name[]')
         var x = document.getElementById('form');
         var submit_button = document.getElementById('result-submit');
         var new_field = document.createElement('input');
@@ -32,7 +35,7 @@ function makeFormResult(splitted) {
         divadd.appendChild(new_field);
         x.insertBefore(divadd, submit_button);
         document.getElementById(id).value = "https://www.ucg.ac.me/objave_spisak/" + splitted[id-1];
-        id += 1;
+        id = idstart.item(idstart.length + 1);
     }
 }
 
