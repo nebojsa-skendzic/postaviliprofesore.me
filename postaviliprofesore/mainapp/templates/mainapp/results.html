@@ -28,19 +28,33 @@
     background-color: transparent;
     text-decoration: underline;
   }
+
+  .masthead {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 85%, #1c1c1c 100%), url("{% static 'bg.jpg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
 </style>
 
-<div class="mx-auto text-center">
+<div class="mx-auto text-center container-fluid position-relative">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
 
-<div class="table-custom-scrollbar table-wrapper-scroll-y">
-  <div class='pb-2' style="opacity: 1; position: -webkit-sticky; position: sticky; top: 0;">
-    <button id='hidebtn' type="button" class="btn btn-dark btn-sm btn-block" data-toggle="collapse" data-target="#hideable" aria-expanded="false" aria-controls="#hideable">
+<div class="row">
+<button id='hidebtn' type="button" class="btn btn-dark btn-sm btn-block"
+data-toggle="collapse" data-target="#hideable" aria-expanded="false" aria-controls="#hideable">
       Dodaj ili ukloni link
     </button>
-    <div id='hideable' class='collapse'>
+    <div id='hideable' class='collapse' style="position: absolute; left: 0; right: 0; margin-top: 30px; z-index: 1; background-color: #d8edc5;">
       <form id="form" method="GET" onsubmit="submitalt();">
           <script>makeFormResult({{ splitted|safe }})</script>
         <button id="result-submit" type="submit" class="btn btn-success float-right">TRAŽI</button>
@@ -55,28 +69,30 @@
     </div>
   </div>
 
-  <div class="table-responsive">
-    <table class="table table-sm table-hover" id="result-table" style="display: table; opacity: 1; background-color: #d8edc5;  position: -webkit-sticky;">
-      <thead class="thead-dark">
+<div id="result-wrapper" class="row table-custom-scrollbar table-wrapper-scroll-y">
+  <div class="table-responsive-md">
+  <table class="table table-sm table-hover table-overflow-custom" id="result-table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Naslov</th>
+        <th scope="col">Tag</th>
+        <th scope="col">Datum</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in results %}
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Naslov</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Datum</th>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td><a href='{{ i.link }}'>{{ i.title }}</a></td>
+          <td>{{ i.subjecttag }}</td>
+          <td>{{ i.date|date:"d.m.Y" }}</td>
         </tr>
-      </thead>
-      <tbody>
-          {% for i in results %}
-          <tr>
-            <th scope="row">{{ forloop.counter }}</th>
-            <td><a href='{{ i.link }}'>{{ i.title }}</a></td>
-            <td>{{ i.subjecttag }}</td>
-            <td>{{ i.date|date:"d.m.Y" }}</td>
-          </tr>
-          {% endfor %}
-      </tbody>
-    </table>
-  </div>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
 </div>
 
 </div>

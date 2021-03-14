@@ -10203,6 +10203,7 @@ body {
   background-attachment: scroll;
   background-size: cover;
 }
+
 .masthead h1 {
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2rem;
@@ -10257,4 +10258,11 @@ display: block;
 position: relative;
 height: 35vh;
 overflow: auto;
+}
+
+.table-overflow-custom {
+  display: block !important;
+  overflow: auto;
+  opacity: 1;
+  background-color: #d8edc5;
 }

@@ -16,7 +16,7 @@ function makeForm() {
     new_field.setAttribute("type", "text");
     new_field.setAttribute("name", "name[]");
     new_field.setAttribute("class", "form-control");
-    new_field.setAttribute("placeholder", "Enter link");
+    new_field.setAttribute("placeholder", "Link:");
     new_field.setAttribute("id", id);
     var divadd = document.createElement('div');
     divadd.setAttribute("class", "form-group");
@@ -40,7 +40,7 @@ function makeFormResult(splitted) {
         new_field.setAttribute("type", "text");
         new_field.setAttribute("name", "name[]");
         new_field.setAttribute("class", "form-control");
-        new_field.setAttribute("placeholder", "Enter link");
+        new_field.setAttribute("placeholder", "Link:");
         new_field.setAttribute("id", id);
         var divadd = document.createElement('div');
         divadd.setAttribute("class", "form-group");
@@ -181,6 +181,7 @@ function submitalt() {
             $("#mainNav").addClass("navbar-shrink");
         } else {
             $("#mainNav").removeClass("navbar-shrink");
+            $("#mainmast").addClass("masthead");
         }
     };
     // Collapse now if page is not at top
