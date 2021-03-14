@@ -20,10 +20,21 @@
 
 </head>
 <style>
-  body {background: rgb(66,66,66);
-        background: linear-gradient(0deg, rgba(66,66,66,1) 0%, rgba(200,200,200,1) 100%);}
+  .bg {
+    background-color: #0f0f0f;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.83) 100%, #1c1c1c 100%), url("{% static 'bg.jpg' %}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    height:100vh;
+  }
 </style>
-<body id="page-top">
+<body id="page-top" class="bg">
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">

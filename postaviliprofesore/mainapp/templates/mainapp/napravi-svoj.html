@@ -11,11 +11,6 @@
     height: auto;
     min-height: 35rem;
     padding: 7rem 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 85%, #1c1c1c 100%), url("{% static 'bg.jpg' %}");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
   }
 </style>
 
@@ -26,7 +21,7 @@
   <div class="row">
         <div class="col d-none d-md-block"><h4 style="color: #F0F8FF">Dodaj koliko god želiš linkova, a kada ih dodaš, sačuvaj link. Pomoću njega
         ćeš uvijek moći da provjeriš da li je postavljeno nešto novo.</h4></div>
-        <div class="col">
+        <div class="col mb-2">
           <div class="table-custom-scrollbar-x table-wrapper-scroll-y">
             <form id="form" method="GET" onsubmit="submitalt();">
                 <script>makeForm()</script>
@@ -49,7 +44,7 @@
 
 
 
-  <div class="row pt-4">
+  <div class="row pt-3">
         <div class="col d-none d-md-block">
             <figure class="figure">
               <img src="{% static 'primjer.png' %}" class="figure-img img-fluid rounded" alt="Primjer">
