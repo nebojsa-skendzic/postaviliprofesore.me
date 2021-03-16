@@ -27,7 +27,6 @@ class Fakultet(models.Model):
 
 
 class Smjer(models.Model):
-    fakultet = models.ForeignKey('Fakultet', on_delete=models.SET_NULL, null=True)
     smjer = models.CharField(max_length=120)
 
     class Meta:
@@ -38,7 +37,8 @@ class Smjer(models.Model):
 
 
 class Semestar(models.Model):
-    smjer = models.ForeignKey('Smjer', on_delete=models.SET_NULL, null=True)
+    smjer = models.ForeignKey('Smjer', on_delete=models.CASCADE)
+    fakultet = models.ForeignKey('Fakultet', on_delete=models.CASCADE)
     semestar = models.IntegerField()
     resultlink = models.TextField()
 

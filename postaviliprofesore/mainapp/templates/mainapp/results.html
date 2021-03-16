@@ -44,12 +44,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
 
-<div class="row">
+<div class="row addlink-custom-scrollbar">
 <button id='hidebtn' type="button" class="btn btn-dark btn-sm btn-block"
 data-toggle="collapse" data-target="#hideable" aria-expanded="false" aria-controls="#hideable">
       Dodaj ili ukloni link
     </button>
-    <div id='hideable' class='collapse' style="position: absolute; left: 0; right: 0; margin-top: 30px; z-index: 1; background-color: #d8edc5;">
+    <div id='hideable' class='collapse table-custom-scrollbar table-wrapper-scroll-y' style="position: absolute; left: 0; right: 0; margin-top: 30px; z-index: 1; background-color: #d8edc5;">
       <form id="form" method="GET" onsubmit="submitalt();">
           <script>makeFormResult({{ splitted|safe }})</script>
         <button id="result-submit" type="submit" class="btn btn-success float-right">TRAŽI</button>

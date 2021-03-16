@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import UpdatedFilesSerializer
+from .serializers import UpdatedFilesSerializer, SemestarSerializer
 from django.db.models import Q  # noqa: F401
 from .models import UpdatedFiles, Fakultet, Smjer, Semestar
+from rest_framework import status
 from ucginfimport import getlinks
 import json
 
@@ -12,7 +13,7 @@ import json
 
 def searchResult(request):
     query = request.GET.get('q')
-    obj = Semestar.objects.filter(smjer__fakultet__fakultet=query).order_by('-smjer__smjer', 'semestar')
+    obj = Semestar.objects.filter(fakultet__fakultet=query).order_by('-smjer__smjer', 'semestar')
     test = {}
     listofsmjer = []
     for i in obj:
@@ -115,3 +116,19 @@ def fakultetView(request):
         counter += 1
 
     return Response(result)
+
+
+@api_view(['GET', 'POST'])
+def semestarapiView(request):
+    if request.method == "GET":
+        serializer = SemestarSerializer(Semestar.objects.all(), many=True)
+        return Response(serializer.data)
+    elif request.method == "POST":
+        data = request.data
+        serializer = SemestarSerializer(data=data, many=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print("INVALID SERIALIZER")

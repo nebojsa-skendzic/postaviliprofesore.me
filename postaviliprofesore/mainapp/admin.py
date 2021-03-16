@@ -8,18 +8,12 @@ class RequestDemoAdmin(admin.ModelAdmin):
     list_display = ['title', 'webtag', 'date']
 
 
-class SemestarAdmin(admin.TabularInline):
+class SemestarAdmin(admin.ModelAdmin):
     model = Semestar
-
-
-class SmjerAdmin(admin.ModelAdmin):
-    inlines = [
-        SemestarAdmin,
-    ]
-
-    list_display = ['fakultet', 'smjer']
-    list_filter = ['fakultet']
+    list_display = ['fakultet', 'smjer', 'semestar']
+    list_filter = ['fakultet', 'smjer', 'semestar']
 
 
 admin.site.register(Fakultet)
-admin.site.register(Smjer, SmjerAdmin)
+admin.site.register(Smjer)
+admin.site.register(Semestar, SemestarAdmin)

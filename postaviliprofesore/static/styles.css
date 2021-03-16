@@ -10245,14 +10245,18 @@ height: 70vh;
 overflow: auto;
 }
 
-.table-wrapper-scroll-y {
-display: block;
-}
-
 .table-custom-scrollbar-x {
 position: relative;
 height: 35vh;
 overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+display: block;
+}
+
+.addlink-custom-scrollbar {
+  overflow: auto;
 }
 
 .table-overflow-custom {
