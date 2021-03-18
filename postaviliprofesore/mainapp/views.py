@@ -74,6 +74,7 @@ def apiView(request):
     api_urls = {
         'Detail View': '/detail-view/<str:webtag>/',
         'List of colleges': '/api/fakultet-view/',
+        'All data currently in db': '/api/semestar-view/',
 
     }
     return Response(api_urls)
