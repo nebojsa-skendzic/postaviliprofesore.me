@@ -5,7 +5,7 @@ from mainapp.models import UpdatedFiles, Fakultet, Smjer, Semestar
 
 @admin.register(UpdatedFiles)
 class RequestDemoAdmin(admin.ModelAdmin):
-    list_display = ['title', 'webtag', 'date']
+    list_display = ['webtag', 'sitedata']
 
 
 class SemestarAdmin(admin.ModelAdmin):

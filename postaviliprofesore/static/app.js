@@ -59,15 +59,19 @@ function delForm() {
 }
 
 function resultrender(data) {
-    document.getElementById('result-table').style.display = 'table';
+    test = data.sort(function(x, y){
+            return y.date - x.date;
+        })
+    console.log(test);
+
     var tbodyresult = document.getElementById("result-body");
     tbodyresult.textContent = '';
-    for(i = 0; i < data.length; i++){
+    for(i = 0; i < test.length; i++){
         var a = document.createElement('a');
-        var linkText = document.createTextNode(data[i].title);
+        var linkText = document.createTextNode(test[i].title);
         a.appendChild(linkText);
-        a.href = data[i].link;
-        a.title = data[i].title;
+        a.href = test[i].link;
+        a.title = test[i].title;
         var new_tr = document.createElement('TR');
         tbodyresult.appendChild(new_tr);
         var th_1 = document.createElement('TH');
@@ -81,12 +85,12 @@ function resultrender(data) {
         th_2.appendChild(a);
         var th_3 = document.createElement('TH');
         th_3.setAttribute("scope", "col");
-        var node3 = document.createTextNode(data[i].subjecttag);
+        var node3 = document.createTextNode(test[i].subjecttag);
         new_tr.appendChild(th_3);
         th_3.appendChild(node3);
         var th_4 = document.createElement('TH');
         th_4.setAttribute("scope", "col");
-        var node4 = document.createTextNode(data[i].date);
+        var node4 = document.createTextNode(convertdate(test[i].date));
         new_tr.appendChild(th_4);
         th_4.appendChild(node4);
 
@@ -135,6 +139,20 @@ function submitalt() {
     console.log(url)
     window.location.href = url;
 
+}
+
+function convertdate(date) {
+    var d = new Date(date * 1000); // The 0 there is the key, which sets the date to the epoch
+    var formattedDate = d.toLocaleDateString(
+          'sr-RS',
+          {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            timeZone: 'utc'
+          }
+        );
+    return formattedDate;
 }
 
 

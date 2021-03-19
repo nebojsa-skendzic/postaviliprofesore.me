@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import os
 import django
+import time
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "postaviliprofesore.settings")
 django.setup()
@@ -17,43 +18,54 @@ def generatelink(href):
 def getlinks(url):
     # url = ['https://www.ucg.ac.me/objave_spisak/blog/1247']
     urllong = "https://www.ucg.ac.me/objave_spisak/" + url
+
     try:
         data = requests.get(urllong)
         data = data.text
 
         soup = BeautifulSoup(data, 'html.parser')
 
-        dblinks = UpdatedFiles.objects.filter(webtag=url).values_list('link', flat=True)
-        weblinks = []
+        try:
+            timecheck = UpdatedFiles.objects.get(webtag=url)
+            timecheck = timecheck.sitedata[0]['link']
+        except Exception:
+            tosave = True
 
+        firstlink = ""
+        linksaved = False
+        weblinks = []
+        savedata = []
         for div in soup.find_all('a', class_='col-xs-12', href=True):
             for h3 in div.find_all('h3'):
                 title = h3.text
             link = generatelink(div['href'])
+            if not linksaved:
+                firstlink = link
+                linksaved = True
             weblinks.append(link)
             for p in div.find_all('p'):
                 p = p.text
                 try:
-                    date = datetime.strptime(p, "%d.%m.%Y").date()
+                    date = datetime.strptime(p, "%d.%m.%Y").timestamp()
                 except Exception:
                     subjecttag = p
 
                     continue  # Use this when getting the last tag
-            saveitem = UpdatedFiles(title=title, link=link, date=date, subjecttag=subjecttag, webtag=url)  # Insert new items into db
-            if link not in dblinks:
+            content = {'title': title, 'link': link, 'date': date, 'subjecttag': subjecttag}  # Insert new items into db
+            savedata.append(content)
+
+        try:
+            if timecheck != firstlink:
+                print("Updating items")
+                UpdatedFiles.objects.get(webtag=url).delete()
+                saveitem = UpdatedFiles(webtag=url, sitedata=savedata)
                 saveitem.save()
-                print("Saved: {}\n".format(saveitem.link))
-
-        for i in dblinks:
-            if i not in weblinks and weblinks:  # Second weblinks checks that the list isn't empty, aka the site has sent a response
-
-                try:
-                    toremove = UpdatedFiles.objects.get(link=i)
-                    toremove.delete()
-                    print("Deleted {}\n".format(toremove))
-                except Exception:
-                    "Failed to remove object\n"
-                    continue
+        except Exception:
+            if tosave:
+                saveitem = UpdatedFiles(webtag=url, sitedata=savedata)
+                saveitem.save()
+            else:
+                pass
 
     except Exception as e:
         print(str(e))
@@ -73,4 +85,5 @@ if __name__ == "__main__":
 
     for i in uniquetags:
         getlinks(i)
+        #time.sleep(1)
 # TODO: PUT THIS INTO A WHILE LOOP

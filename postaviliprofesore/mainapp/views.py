@@ -7,6 +7,8 @@ from .models import UpdatedFiles, Fakultet, Smjer, Semestar
 from rest_framework import status
 from ucginfimport import getlinks
 import json
+from datetime import datetime
+from django import template
 
 #  http://127.0.0.1:8000/result/https://www.ucg.ac.me/objave_spisak/blog/44389,https://www.ucg.ac.me/objave_spisak/blog/44390,https://www.ucg.ac.me/objave_spisak/blog/43073,https://www.ucg.ac.me/objave_spisak/blog/43072,https://www.ucg.ac.me/objave_spisak/blog/43989,https://www.ucg.ac.me/objave_spisak/blog/43988,https://www.ucg.ac.me/objave_spisak/blog/55432,https://www.ucg.ac.me/objave_spisak/blog/55431
 
@@ -50,19 +52,23 @@ def resultView(request, webtag):
             if not UpdatedFiles.objects.filter(webtag=i):
                 getlinks(i)
 
-    execstr = "UpdatedFiles.objects.filter("
-    for i in splitted:  # Building the command based on number of links requested
-        if splitted.index(i) == len(splitted) - 1:
-            execstr += "Q(webtag='{}')).order_by('-date')".format(i)
-        else:
-            execstr += "Q(webtag='{}')|".format(i)
+    # execstr = "UpdatedFiles.objects.filter("
+    # for i in splitted:  # Building the command based on number of links requested
+    #     if splitted.index(i) == len(splitted) - 1:
+    #         execstr += "Q(webtag='{}'))".format(i)
+    #     else:
+    #         execstr += "Q(webtag='{}')|".format(i)
+    # results = eval(execstr)
 
-    results = eval(execstr)
+    results = []
+    for i in splitted:
+        objinstance = UpdatedFiles.objects.filter(webtag=i).values_list("sitedata", flat=True)
+        results = results + list(objinstance)[0]
 
     splitlist = json.dumps(splitted)
 
     context = {
-        'results': results,
+        'results': json.dumps(results),
         'splitted': splitlist,
     }
 
