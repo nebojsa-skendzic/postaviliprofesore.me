@@ -140,15 +140,12 @@ function submitalt() {
 
 function convertdate(date) {
     var d = new Date(date * 1000); // The 0 there is the key, which sets the date to the epoch
-    var formattedDate = d.toLocaleDateString(
-          'sr-RS',
-          {
-            year: 'numeric',
-            month: 'numeric',
-            day: 'numeric',
-            timeZone: 'utc'
-          }
-        );
+    var dd = d.getDate();
+    var mm = d.getMonth()+1;
+    var yyyy = d.getFullYear();
+
+    var formattedDate = dd+'.'+mm+'.'+yyyy;
+
     return formattedDate;
 }
 
