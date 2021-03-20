@@ -15,12 +15,14 @@
 <div class='container-fluid'>
 
 {% for key, value in test.items %}
-    <div class='d-inline-flex p-2 text-white'> <h3>{{ key }}</h3></div>
-    <div class="btn-group mr-2 d-inline-flex p-2 text-white" role="group">
+  <div class="row">
+    <div class='d-inline-flex p-2 text-white col-10'> <h3>{{ key }}</h3></div>
+    <div class="btn-group mr-2 d-inline-flex p-2 text-white col" role="group">
     {% for x, y in value.items %}
     <a href="{{ y }}" type="button" class="btn btn-secondary">{{ x }}</a>
     {% endfor %}
   </div>
+</div>
 
 {% endfor %}
 </div>

@@ -18,7 +18,7 @@ def generatelink(href):
 def getlinks(url):
     # url = ['https://www.ucg.ac.me/objave_spisak/blog/1247']
     urllong = "https://www.ucg.ac.me/objave_spisak/" + url
-
+    print("Checking: {}".format(url))
     try:
         data = requests.get(urllong)
         data = data.text
@@ -28,20 +28,26 @@ def getlinks(url):
         try:
             timecheck = UpdatedFiles.objects.get(webtag=url)
             timecheck = timecheck.sitedata[0]['link']
+            tosave = False
         except Exception:
+            timecheck = ""
             tosave = True
 
-        firstlink = ""
         linksaved = False
+
         weblinks = []
         savedata = []
         for div in soup.find_all('a', class_='col-xs-12', href=True):
             for h3 in div.find_all('h3'):
                 title = h3.text
             link = generatelink(div['href'])
-            if not linksaved:
-                firstlink = link
+
+            if timecheck == link and not linksaved:
+                tosave = False
                 linksaved = True
+            else:
+                linksaved = True
+
             weblinks.append(link)
             for p in div.find_all('p'):
                 p = p.text
@@ -55,14 +61,15 @@ def getlinks(url):
             savedata.append(content)
 
         try:
-            if timecheck != firstlink:
-                print("Updating items")
+            if tosave:
                 UpdatedFiles.objects.get(webtag=url).delete()
                 saveitem = UpdatedFiles(webtag=url, sitedata=savedata)
+                print("Updating {}".format(saveitem.webtag))
                 saveitem.save()
         except Exception:
             if tosave:
                 saveitem = UpdatedFiles(webtag=url, sitedata=savedata)
+                print("Saving {}".format(saveitem.webtag))
                 saveitem.save()
             else:
                 pass
@@ -81,7 +88,7 @@ if __name__ == "__main__":
             uniquetags.append(i)
 
     if uniquetags == []:
-        uniquetags.append("blog/1247")  # Placeholder in case there is nothing in db
+        uniquetags.append("blog/5625")  # Placeholder in case there is nothing in db
 
     for i in uniquetags:
         getlinks(i)
