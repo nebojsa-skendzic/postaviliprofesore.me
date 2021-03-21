@@ -25,14 +25,18 @@ def getlinks(url):
 
         soup = BeautifulSoup(data, 'html.parser')
 
-        try:
-            timecheck = UpdatedFiles.objects.get(webtag=url)
-            timecheck = timecheck.sitedata[0]['link']
-        except Exception:
-            timecheck = ""
-
         tosave = True
         linksaved = False
+
+        try:
+            timecheck = UpdatedFiles.objects.get(webtag=url)
+            try:
+                timecheck = timecheck.sitedata[0]['link']
+            except:
+                pass
+        except Exception:
+            timecheck = ""
+            linksaved = True
 
         weblinks = []
         savedata = []
