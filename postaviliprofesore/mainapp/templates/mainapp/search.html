@@ -13,18 +13,33 @@
 </style>
 
 <div class='container-fluid'>
-
-{% for key, value in test.items %}
-  <div class="row">
-    <div class='d-inline-flex p-2 text-white col-10'> <h3>{{ key }}</h3></div>
-    <div class="btn-group mr-2 d-inline-flex p-2 text-white col" role="group">
-    {% for x, y in value.items %}
-    <a href="{{ y }}" type="button" class="btn btn-secondary">{{ x }}</a>
-    {% endfor %}
+<div id="search-wrapper">
+    <div class="table-responsive-md">
+    <table class="table table-sm table-hover" id="search-table" style="background-color: #d8edc5;">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Smjer</th>
+          <th scope="col">Semestar</th>
+        </tr>
+      </thead>
+      <tbody id="search-body">
+          {% for key, value in test.items %}
+          <tr role="row">
+            <td>{{ key }}</td>
+            <td>
+                <div class="btn-group mr-2 d-inline-flex p-2 text-white col" role="group">
+                {% for x, y in value.items %}
+                <a href="{{ y }}" type="button" class="btn btn-secondary">{{ x }}</a>
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 
-{% endfor %}
-</div>
+
 
 {% endblock content %}
