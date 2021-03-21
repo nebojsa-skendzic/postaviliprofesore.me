@@ -28,11 +28,10 @@ def getlinks(url):
         try:
             timecheck = UpdatedFiles.objects.get(webtag=url)
             timecheck = timecheck.sitedata[0]['link']
-            tosave = False
         except Exception:
             timecheck = ""
-            tosave = True
 
+        tosave = True
         linksaved = False
 
         weblinks = []
@@ -61,15 +60,15 @@ def getlinks(url):
             savedata.append(content)
 
         try:
-            if tosave:
+            if tosave and linksaved:
                 UpdatedFiles.objects.get(webtag=url).delete()
                 saveitem = UpdatedFiles(webtag=url, sitedata=savedata)
-                print("Updating {}".format(saveitem.webtag))
+                print("Updating {}\n".format(saveitem.webtag))
                 saveitem.save()
         except Exception:
             if tosave:
                 saveitem = UpdatedFiles(webtag=url, sitedata=savedata)
-                print("Saving {}".format(saveitem.webtag))
+                print("Saving {}\n".format(saveitem.webtag))
                 saveitem.save()
             else:
                 pass
