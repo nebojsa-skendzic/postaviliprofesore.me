@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load static %}
+
 <style>
     .masthead {
       position: relative;
@@ -11,6 +13,10 @@
       padding: 7rem 0;
     }
 </style>
+
+<div id="spinner" class="lds-roller whiteout" style="position: none; left: 50%; top: 45%; position: fixed; display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+<div id="overlay" class="spinner_overlay" style="display: none;"></div>
+
 
 <div class='container-fluid'>
 <div id="search-wrapper">
@@ -41,5 +47,18 @@
 </div>
 
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+  $(function(){
+    $('a').click(function(){
+      $('#spinner').show();
+      $('#overlay').show();
+    });
+  });
+});
+</script>
 
 {% endblock content %}

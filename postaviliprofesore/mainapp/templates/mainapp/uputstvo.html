@@ -1,0 +1,77 @@
+{% extends 'mainapp/base.html' %}
+
+<head>{% load static %}</head>
+
+{% block content %}
+
+<style>
+  .masthead {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 7rem 0;
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{% static 'app.js' %}"></script>
+
+<div class="container-fluid" style="margin-top: 2rem;">
+  <div class="row">
+        <div class="col"><h4 style="color: #F0F8FF; text-align: center;">1. Traži po fakultetu pomoću pretraživača na vrhu stranice.</br>2. Pronađi svoj smjer i
+         semestar</br>3. Dodaj ili ukloni linkove kako tebi odgovara. </br>4. Sačuvaj link za buduću upotrebu.
+        </br></h4>
+        </div>
+  </div>
+</br>
+  <div class="row mt-5">
+        <div class="col"><h3 style="color: #F0F8FF; text-align: center;">Dodavanje linka:</h3>
+       </div>
+  </div>
+
+  <div class="row mt-5">
+        <div class="col"><h5 style="color: #F0F8FF; text-align: center;">Link dodaješ preko dugmeta "Dodaj ili ukloni link" pomoću + ili x dugmića na dnu.</h5>
+       </div>
+  </div>
+
+  <div class="row" style="color: #F0F8FF; text-align: center;">
+      <div class="col">
+        <h4 style="color: #F0F8FF; text-align: center;">Pobrini se da je link koji dodaješ po šablonu:<br> <br><mark style="word-wrap: break-word; color: #e8e8e8; background: #1b5f87;">https://www.ucg.ac.me/objave_spisak/...</mark><br><br>
+        <h5 style="color: #F0F8FF; text-align: center;">Primjer: <a style="word-wrap: break-word;" href="https://www.ucg.ac.me/objave_spisak/blog/1226" target="_blank">https://www.ucg.ac.me/objave_spisak/blog/1226</a></h5></h4>
+        </h4>
+      </div>
+  </div>
+
+  <div class="row mt-4">
+        <div class="col d-none d-md-block">
+            <figure class="figure">
+              <img src="{% static 'primjer.png' %}" class="figure-img img-fluid rounded" alt="Primjer">
+              <figcaption class="text-right lead" style="color: #F0F8FF;">Primjer</figcaption>
+            </figure>
+        </div>
+        <div class="col"><h5 style="color: #F0F8FF">Sajt može da primi samo određenu vrstu linka. Pobrini se da raspored
+        stranice sa koje kopiraš link liči na primjer.</h5>
+        <h6 style="color: #F0F8FF">
+        Trebalo bi da radi svaka stranica kojoj možeš pristupiti preko plavog dugmeta. Obavještenja, dokumenta, vijesti itd.
+      Uključujuči i vijesti za predmete. Na primjer:<br><br></h6><img src="{% static 'plavi.png' %}" class="img-thumbnail" alt="Primjer za dugme"></div>
+  </div>
+  <div class="row pt-2 d-md-none">
+        <div class="col">
+            <figure class="figure">
+              <img src="{% static 'primjer.png' %}" class="figure-img img-fluid rounded" alt="Primjer">
+              <figcaption class="text-right lead" style="color: #F0F8FF;">Primjer</figcaption>
+            </figure>
+        </div>
+  </div>
+
+  <div class="row mt-5">
+        <div class="col text-center">
+            <span style="color: #F0F8FF">Ako hoćeš da sastaviš linkove ispočetka, klikni <a href="{% url 'napraviSvoj' %}">ovdje</a>.</span>
+        </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

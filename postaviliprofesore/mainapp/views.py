@@ -7,6 +7,7 @@ from .models import UpdatedFiles, Fakultet, Smjer, Semestar
 from rest_framework import status
 from ucginfimport import getlinks
 import json
+from django.contrib.admin.views.decorators import staff_member_required
 from datetime import datetime
 from django import template
 
@@ -41,6 +42,11 @@ def test(request):
 def napravisvoj(request):
 
     return render(request, "mainapp/napravi-svoj.html")
+
+
+def uputstvo(request):
+
+    return render(request, "mainapp/uputstvo.html")
 
 
 def resultView(request, webtag):
@@ -125,6 +131,7 @@ def fakultetView(request):
     return Response(result)
 
 
+@staff_member_required
 @api_view(['GET', 'POST'])
 def semestarapiView(request):
     if request.method == "GET":
