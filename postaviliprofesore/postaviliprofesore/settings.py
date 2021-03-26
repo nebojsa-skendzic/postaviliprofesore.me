@@ -29,7 +29,7 @@ SECRET_KEY = config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['34.107.122.159', '127.0.0.1']
+ALLOWED_HOSTS = ['postaviliprofesore.me', 'www.postaviliprofesore.me']
 
 
 # Application definition
@@ -135,3 +135,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     '/home/nebojsa-skendzic/postaviliprofesore/static/',
 )
+
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
