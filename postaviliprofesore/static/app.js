@@ -72,6 +72,7 @@ function resultrender(data) {
         a.appendChild(linkText);
         a.href = test[i].link;
         a.title = test[i].title;
+        a.classList.add('text-break');
         var new_tr = document.createElement('TR');
         tbodyresult.appendChild(new_tr);
         var th_1 = document.createElement('TH');
@@ -193,7 +194,6 @@ function convertdate(date) {
             $("#mainNav").addClass("navbar-shrink");
         } else {
             $("#mainNav").removeClass("navbar-shrink");
-            $("#mainmast").addClass("masthead");
         }
     };
     // Collapse now if page is not at top
