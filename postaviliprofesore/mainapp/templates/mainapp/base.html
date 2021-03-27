@@ -93,6 +93,12 @@
 
 
 <script>
+var input = document.querySelector("#acinput"); // Selects the input.
+var datalist = document.querySelector("datalist"); // Selects the datalist.
+
+let userAgentString = navigator.userAgent;
+let firefoxAgent = userAgentString.indexOf("Firefox") > -1;
+
 $(function() {
     $.ajax({
       type: "GET",
@@ -104,16 +110,21 @@ $(function() {
         var list = document.getElementById('autocomplete');
         result.forEach(function(item){
          var option = document.createElement('option');
-         option.value = item;
+         option.innerHTML = item;
          list.appendChild(option);
-         list.setAttribute("id", "");
+         if (!firefoxAgent) {
+          list.setAttribute("id", "");
+        }
       });
     },
   });
 });
 
-var input = document.querySelector("#acinput"); // Selects the input.
-var datalist = document.querySelector("datalist"); // Selects the datalist.
+
+console.log(userAgentString);
+console.log(firefoxAgent);
+
+
 input.addEventListener("keyup", (e) => {
 
     // If input value is longer or equal than 2 chars, adding "users" on ID attribute.
