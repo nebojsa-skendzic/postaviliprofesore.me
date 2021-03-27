@@ -24,7 +24,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-CHV7G2LPLP');
+    gtag('config', 'G-CHV7G2LPLP', {cookie_flags: 'SameSite=None; Secure'});
   </script>
 
 </head>
@@ -48,7 +48,6 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{% url 'index' %}"><img src="{% static 'logo.svg' %}" alt="" width="60" height="60"></a>
-            <a class="nav-link js-scroll-trigger" href="#">Kontakt</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -56,15 +55,14 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'uputstvo' %}">Uputstvo</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Kontakt</a></li>
                     <li class="nav-item" style='display: block; padding: 1.7rem 1rem;'>
                       <form class="form-inline my-2 my-sm-0" action="{% url 'searchResult' %}" method="get">
-                        <div class="input-group mb-3"> <input id="myAutocomplete" name="q" type="text" class="form-control" placeholder="Traži po fakultetu" aria-label="Search" autocomplete="off">
+                        <datalist id="autocomplete"></datalist>
+                        <div class="input-group mb-3"> <input id='acinput' list="autocomplete" name="q" type="text" class="form-control" placeholder="Traži po fakultetu" aria-label="Search" autocomplete="off">
                             <div class="input-group-append"><button class="btn btn-success"><i class="fas fa-search"></i></button></div>
                         </div>
                       </form>
-                    </li>
-                    <li>
-
                     </li>
                 </ul>
             </div>
@@ -91,27 +89,41 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-4-autocomplete/dist/bootstrap-4-autocomplete.min.js" crossorigin="anonymous"></script>
 <script src="{% static 'app.js' %}"></script>
-<script>
 
+
+<script>
 $(function() {
-  $.ajax({
-    type: "GET",
-    url: "{% url 'fakultetView' %}",
-    dataType: "json",
-    success: function(data) {
-      console.log(data); // -- Object
-      var json = data;
-      $('#myAutocomplete').autocomplete({
-      source: json,
-      highlightClass: 'text-info',
-      treshold: 2,
-    });
-    }
+    $.ajax({
+      type: "GET",
+      url: "{% url 'fakultetView' %}",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+        var result = Object.keys(data);
+        var list = document.getElementById('autocomplete');
+        result.forEach(function(item){
+         var option = document.createElement('option');
+         option.value = item;
+         list.appendChild(option);
+         list.setAttribute("id", "");
+      });
+    },
   });
 });
+
+var input = document.querySelector("#acinput"); // Selects the input.
+var datalist = document.querySelector("datalist"); // Selects the datalist.
+input.addEventListener("keyup", (e) => {
+
+    // If input value is longer or equal than 2 chars, adding "users" on ID attribute.
+    if (e.target.value.length >= 2) {
+        datalist.setAttribute("id", "autocomplete");
+    } else {
+        datalist.setAttribute("id", "");
+    }
+});
+
 
 </script>
 
