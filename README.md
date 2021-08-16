@@ -1,10 +1,10 @@
 # postaviliprofesore.me
-
-My first website using:
+Buit using:
 
 * Django
 * Django rest framework
 * Bootstrap
+* BS4 for web scraping
 
 It scrapes the website of Univerziteti Crne Gore for new posts in different subject categories.
 It then provides and interface to easily check out the latest posts to help students keep up to date with their course materials.
