@@ -1,5 +1,5 @@
 # postaviliprofesore.me
-Buit using:
+Built using:
 
 * Django
 * Django rest framework
